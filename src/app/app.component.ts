@@ -1,14 +1,24 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {User} from "./model/user.model";
+import {ProfileService} from "./service/profile.service";
+import {Contact} from "./model/contact.model";
 
 declare let Circles: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ProfileService]
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements OnInit, AfterViewInit{
+  ngOnInit(): void {
+    this.pageSerice.initData();
+  }
   title = 'app';
+
+  constructor(public pageSerice: ProfileService){
+  }
 
   ngAfterViewInit(): void {
     var colors = [
@@ -30,5 +40,12 @@ export class AppComponent implements AfterViewInit{
     }
   }
 
+  get user(): User{
+    return this.pageSerice.pageData.user;
+  }
+
+  get contact(): Contact{
+    return this.pageSerice.pageData.contact;
+  }
 
 }

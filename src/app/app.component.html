@@ -2,13 +2,13 @@
 <div class="header">
   <div class="container">
     <div class="header-profile">
-      <img src="assets/images/profile.png" alt=""/>
+      <img src="{{user.avatarImage}}" alt=""/>
     </div>
   </div>
 </div>
 <div class="header-top">
-  <h2>Aleen Lorem Ipsy</h2>
-  <small>UI/UX Designer & Front-end Developer <br>Lorem, Ipsy</small>
+  <h2>{{user.fullName}}</h2>
+  <small>{{user.job}}</small>
 </div>
 <!-- Header Ends Here ---->
 <!--- About Me Starts Here --->
@@ -17,19 +17,15 @@
     <div class="about-top">
       <h3 class="top-title">About Me</h3>
       <span class="line"></span>
-      <p class="about-p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-        the industry's standard dummy text ever since the 1500s. </p>
-      <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
-        not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum</p>
+      <p class="about-p">{{user.description}}</p>
       <div class="row about-row">
         <div class="col-md-4 about-row-column">
           <ul class="about-details">
-            <li><p>Birthday: <span>8/7/1993</span></p></li>
-            <li><p>Phone: <span>+0000 000 00</span></p></li>
-            <li><p>Email: <span><a href="mailto:example@gmail.com">Loremipsy@gmail.com</a></span></p></li>
-            <li><p>Website: <span><a href="http://w3layouts.com">www.Loremipsy.me</a></span></p></li>
-            <li><p>Address: <span>123 Ipsy Street, Lorem, Ipsy</span></p></li>
+            <li><p>Birthday: <span>{{user.birthDay| date:"dd/MM/yyyy"}}</span></p></li>
+            <li><p>Phone: <span>{{user.phoneNumber}}</span></p></li>
+            <li><p>Email: <span><a href="mailto:example@gmail.com">{{user.email}}</a></span></p></li>
+            <li><p>Website: <span><a href="http://w3layouts.com">{{user.webSite}}</a></span></p></li>
+            <li><p>Address: <span>{{user.address}}</span></p></li>
           </ul>
         </div>
         <div class="col-md-8 about-row-column">
@@ -224,26 +220,23 @@
         </div>
         <div class="col-md-4 contact-column">
           <i class="mail"></i>
-          <p><a href="mailto:example@gmail.com">loremipsy@gmail.com</a></p>
+          <p><a href="mailto:example@gmail.com">{{user.email}}</a></p>
         </div>
         <div class="col-md-4 contact-column">
           <i class="phone"></i>
-          <p>+123 456 789<br>+987 654 321</p>
+          <p>{{user.phoneNumber}}</p>
         </div>
         <div class="clearfix"></div>
       </div>
       <div class="contact-form">
         <div class="text">
-          <input type="text" value="Your Name.." onfocus="this.value = '';"
-                 onblur="if (this.value == '') {this.value = 'Your Name..';}"/>
+          <input type="text"  [(ngModel)] = "contact.address" placeholder="Your Name..">
         </div>
         <div class="text">
-          <input type="text" value="Your Email.." onfocus="this.value = '';"
-                 onblur="if (this.value == '') {this.value = 'Your Email..';}"/>
+          <input type="text"  [(ngModel)] = "contact.email" placeholder="Your Email..">
         </div>
         <div class="text">
-          <textarea value="Message:" onfocus="this.value = '';"
-                    onblur="if (this.value == '') {this.value = 'Message';}">Your Message..</textarea>
+          <textarea value="Message:" [(ngModel)] = "contact.phoneNumber" >Your Message..</textarea>
         </div>
         <div class="text">
           <input type="submit"/>
